@@ -8,8 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
- * Classe qui gÃ¨re la fenÃªtre principale
- * Rassemble tous les Ã©lÃ©ments
+ * Classe qui gère la fenêtre principale
+ * Rassemble tous les éléments
  * @author Adrien COUCHOT
  * @version 1.0
  */
@@ -44,7 +44,7 @@ public class FenetrePrincipale extends JFrame{
 
                     @Override
                     public void windowClosing(WindowEvent e) {
-                        if(JOptionPane.showConfirmDialog(FP, "ÃŠtes-vous sÃ»r de vouloir quitter ?") == JOptionPane.OK_OPTION){
+                        if(JOptionPane.showConfirmDialog(FP, "Êtes-vous sûr de vouloir quitter ?") == JOptionPane.OK_OPTION){
                             fichier.sauvegarder();
                             FP.setVisible(false);
                             FP.dispose();

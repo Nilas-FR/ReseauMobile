@@ -45,7 +45,7 @@ public class Options extends JPanel {
                                 JLabel lTextPosX = new JLabel("Position X : ");
                                 JLabel lTextPosY = new JLabel("Position Y : ");
                                 JLabel lTextPuis = new JLabel("Puissance : ");
-                                JLabel lTextFreq = new JLabel("FrÃ©quence : ");
+                                JLabel lTextFreq = new JLabel("Fréquence : ");
                                 
                                 JTextField tNom = new JTextField("DefaultName");
                                 JTextField tPosX = new JTextField(Antenne.POSITIONX_DEFAULT+"");

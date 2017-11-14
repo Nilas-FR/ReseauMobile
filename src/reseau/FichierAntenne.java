@@ -9,37 +9,37 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * Classe qui gÃ¨re le chargement et la sauvegarde dans un fichier des antennes
+ * Classe qui gère le chargement et la sauvegarde dans un fichier des antennes
  * @author Adrien COUCHOT
  * @version 1.0
  */
 public class FichierAntenne {
 	
 	/**
-	 * Lien vers la fenÃªtre principale pour accÃ¨der aux variables globale et Ãªtre accessible
+	 * Lien vers la fenêtre principale pour accèder aux variables globale et être accessible
 	 */
 	private final FenetrePrincipale FP;
 	/**
-	 * Fichier dans lequel on conserve les donnÃ©es
+	 * Fichier dans lequel on conserve les données
 	 */
 	private final File f = new File("_data.txt");
 	/**
-	 * CharactÃ¨re pour sÃ©parer les lignes
+	 * Charactère pour séparer les lignes
 	 */
-	private final char cFinLigne = 'Â¤';
+	private final char cFinLigne = '¤';
 	
 	/**
 	 * Constructeur
-	 * @param FP Lien vers la fenÃªtre principale
+	 * @param FP Lien vers la fenêtre principale
 	 */
 	public FichierAntenne(FenetrePrincipale FP) {
 		this.FP = FP;
 	}
 	
 	/**
-	 * Sauvegarde les donnÃ©es dans le fichier
-	 * Peut Ãªtre utilisÃ© plusieurs fois
-	 * Est appelÃ© par un bouton
+	 * Sauvegarde les données dans le fichier
+	 * Peut être utilisé plusieurs fois
+	 * Est appelé par un bouton
 	 */
 	public void sauvegarder() {
 		try {
@@ -50,15 +50,15 @@ public class FichierAntenne {
 				
 			fw.close();
 		} catch (Exception e) {
-			System.out.println("ERREUR (FICHIER) : Sauvegarde non effectuÃ©e.");
+			System.out.println("ERREUR (FICHIER) : Sauvegarde non effectuée.");
 			//e.printStackTrace();
 		}
 	}
 	
 	/**
-	 * Charge les donnÃ©es du fichier
-	 * Est utilisÃ© une seule fois
-	 * Est appelÃ© lors au constructeur de la fenÃªtre principale
+	 * Charge les données du fichier
+	 * Est utilisé une seule fois
+	 * Est appelé lors au constructeur de la fenêtre principale
 	 */
 	public void charger() {
 		try {
@@ -80,14 +80,14 @@ public class FichierAntenne {
 			}
 			fr.close();
 		} catch (Exception e) {
-			System.out.println("ERREUR (FICHIER) : Pas de fichier '_data' trouvÃ©.");
+			System.out.println("ERREUR (FICHIER) : Pas de fichier '_data' trouvé.");
 			//e.printStackTrace();
 		}
 	}
 	
 	/**
-	 * MÃ©thode par dÃ©fault d'un objet
-	 * @return le chemin oÃ¹ le fichier est sauvegardÃ©
+	 * Méthode par défault d'un objet
+	 * @return le chemin où le fichier est sauvegardé
 	 */
 	@Override
 	public String toString(){

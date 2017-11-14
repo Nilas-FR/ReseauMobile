@@ -1,7 +1,7 @@
 package reseau;
 
 /**
- * Classe qui gÃ¨re les antennes
+ * Classe qui gère les antennes
  * @author Adrien COUCHOT
  * @version 1.0
  */
@@ -24,7 +24,7 @@ public class Antenne {
 	 */
 	public final double puissance;
 	/**
-	 * FrÃ©quence de l'antenne
+	 * Fréquence de l'antenne
 	 */
 	public final double frequence;
 
@@ -34,12 +34,12 @@ public class Antenne {
 	public static final double FREQUENCE_DEFAULT = 50;
 	
 	/**
-	 * Constructeur dÃ©taillÃ© d'une antenne
+	 * Constructeur détaillé d'une antenne
 	 * @param nom Nom de l'antenne
 	 * @param positionX Position X de l'antenne
 	 * @param positionY Position Y de l'antenne
 	 * @param puissance Puissance de l'antenne
-	 * @param frequence FrÃ©quence de l'antenne
+	 * @param frequence Fréquence de l'antenne
 	 */
 	public Antenne(String nom, double positionX, double positionY, double puissance, double frequence){
 		this.nom = nom;
@@ -50,7 +50,7 @@ public class Antenne {
 	}
 	
 	/**
-	 * Constructeur simplifiÃ© d'une antenne
+	 * Constructeur simplifié d'une antenne
 	 * @param nom Nom de l'antenne
 	 * @param positionX Position X de l'antenne
 	 * @param positionY Position Y de l'antenne
@@ -60,7 +60,7 @@ public class Antenne {
 	}
 	
 	/**
-	 * Constructeur par dÃ©fault d'une antenne
+	 * Constructeur par défault d'une antenne
 	 * @param nom Nom de l'antenne
 	 */
 	public Antenne(String nom){
@@ -68,7 +68,7 @@ public class Antenne {
 	}
 	
 	/**
-	 * MÃ©thode par dÃ©fault d'un objet
+	 * Méthode par défault d'un objet
 	 * @return la description de l'antenne
 	 */
 	@Override
