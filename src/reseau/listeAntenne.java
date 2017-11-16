@@ -1,4 +1,4 @@
-package dialog;
+package reseau;
 
 import java.awt.BorderLayout;
 import java.awt.Dialog;
@@ -13,9 +13,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
-
-import reseau.Antenne;
-import reseau.FenetrePrincipale;
 
 public class listeAntenne {
 	

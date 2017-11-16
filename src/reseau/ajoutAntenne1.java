@@ -1,4 +1,4 @@
-package dialog;
+package reseau;
 
 import java.awt.Dialog;
 import java.awt.GridLayout;
@@ -8,9 +8,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
-import reseau.Antenne;
-import reseau.FenetrePrincipale;
 
 public class ajoutAntenne1 {
 	

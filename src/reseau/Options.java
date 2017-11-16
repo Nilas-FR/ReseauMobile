@@ -12,9 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import dialog.ajoutAntenne1;
-import dialog.listeAntenne;
-
 /**
  * 
  * @author Jonathan BOERLEN et Adrien COUCHOT
