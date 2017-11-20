@@ -13,6 +13,7 @@ public class ajoutAntenne1 {
 	
 	public ajoutAntenne1(FenetrePrincipale FP) {
 		Dialog fNouAnten1 = new Dialog(FP);
+		fNouAnten1.setUndecorated(true);
         fNouAnten1.setAlwaysOnTop(true);
         fNouAnten1.setTitle("Ajouter une antenne");
         fNouAnten1.setLayout(new GridLayout(6,2));

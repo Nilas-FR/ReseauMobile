@@ -18,6 +18,7 @@ public class listeAntenne {
 	
 	public listeAntenne(FenetrePrincipale FP) {
 		Dialog fLisAnten = new Dialog(FP);
+		fLisAnten.setUndecorated(true);
 		fLisAnten.setAlwaysOnTop(true);
 		fLisAnten.setTitle("Liste des antennes");
 		JList<Antenne> liste = new JList<Antenne>(FP.Antennes);

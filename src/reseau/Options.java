@@ -28,11 +28,12 @@ public class Options extends JPanel {
 	public Options(FenetrePrincipale FP) {
 		this.FP = FP;
 		JButton bNouAnten1 = new JButton("Ajouter une antenne (Clavier)");
-		JButton bNouAnten2 = new JButton("Ajouter une antenne (Graphique)");
+		//JButton bNouAnten2 = new JButton("Ajouter une antenne (Graphique)");
 		JButton bLisAnten = new JButton("Voir la liste");
 		
 		add(bNouAnten1);
-		add(bNouAnten2);
+		//add(bNouAnten2);
+		
 		add(bLisAnten);
                 
         bNouAnten1.addActionListener(new ActionListener() {

@@ -23,7 +23,7 @@ public class FenetrePrincipale extends JFrame{
 	public Vector<Antenne> Antennes = new Vector<Antenne>();
 	
 	public FenetrePrincipale(){
-		super("Titre");
+		super("Projet Réseau Mobile");
                 FP = this;
 		
 		fOptions = new Options(this);
@@ -31,7 +31,8 @@ public class FenetrePrincipale extends JFrame{
 		fichier = new FichierAntenne(this);
 		
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-
+        setResizable(false);
+        
         add(fOptions, BorderLayout.NORTH);
         add(fGraphe, BorderLayout.SOUTH);
         

@@ -19,8 +19,9 @@ public class Graphe extends JPanel{
 	public void paintComponent(Graphics g) {
         
         super.paintComponent(g);
-       /* g.setColor(Color.WHITE);
-        g.fillRect(0, 0, getWidth(), getHeight());*/
+        //g.setColor(Color.WHITE);
+        //g.fillRect(0, 0, getWidth(), getHeight());
+        
         
         for (Antenne antenne : FP.Antennes)
         {
