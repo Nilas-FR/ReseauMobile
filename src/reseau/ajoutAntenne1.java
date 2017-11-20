@@ -64,8 +64,9 @@ public class ajoutAntenne1 {
                         String puis = tPuis.getText();
                         String freq = tFreq.getText();
                         fNouAnten1.setVisible(false);
-                        
+                        //Faire des exceptions
                         FP.Antennes.add(new Antenne(nom, Double.parseDouble(posx), Double.parseDouble(posy), Double.parseDouble(puis), Double.parseDouble(freq)));
+                        FP.fGraphe.repaint();
                 }
         });
         
