@@ -22,7 +22,7 @@ public class Options extends JPanel {
 	private FenetrePrincipale FP;
 	
 	/**
-	 * @author Adrien COUCHOT
+	 * @author Jonathan BOERLEN et Adrien COUCHOT
 	 * @param FP
 	 */
 	public Options(FenetrePrincipale FP) {
@@ -30,12 +30,13 @@ public class Options extends JPanel {
 		JButton bNouAnten1 = new JButton("Ajouter une antenne (Clavier)");
 		//JButton bNouAnten2 = new JButton("Ajouter une antenne (Graphique)");
 		JButton bLisAnten = new JButton("Voir la liste");
+		JButton ResetGraph = new JButton("Remettre à l'echelle 1:1");
 		
 		add(bNouAnten1);
 		//add(bNouAnten2);
-		
 		add(bLisAnten);
-                
+		add(ResetGraph);
+		
         bNouAnten1.addActionListener(new ActionListener() {
 			
 			@Override
@@ -48,6 +49,13 @@ public class Options extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new listeAntenne(FP);
+			}
+		});
+        ResetGraph.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				FP.fGraphe.reset();
 			}
 		});
 	}

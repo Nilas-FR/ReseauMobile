@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class FenetrePrincipale extends JFrame{
 	
-        private final FenetrePrincipale FP;
+    private final FenetrePrincipale FP;
 	public final Options fOptions;
 	public final Graphe fGraphe;
 	public final FichierAntenne fichier;

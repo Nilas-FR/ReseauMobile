@@ -9,16 +9,22 @@ import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 public class listeAntenne {
 	
 	public listeAntenne(FenetrePrincipale FP) {
-		Dialog fLisAnten = new Dialog(FP);
+		Dialog fLisAnten = new JDialog(FP);
 		fLisAnten.setUndecorated(true);
+		JPanel panel = (JPanel)((JDialog) fLisAnten).getContentPane();
+		Border raisedbevel = BorderFactory.createRaisedBevelBorder();
+		panel.setBorder(raisedbevel);
 		fLisAnten.setAlwaysOnTop(true);
 		fLisAnten.setTitle("Liste des antennes");
 		JList<Antenne> liste = new JList<Antenne>(FP.Antennes);

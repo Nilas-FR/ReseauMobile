@@ -1,19 +1,29 @@
 package reseau;
 
+
+import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 public class ajoutAntenne1 {
 	
 	public ajoutAntenne1(FenetrePrincipale FP) {
-		Dialog fNouAnten1 = new Dialog(FP);
+		Dialog fNouAnten1 = new JDialog(FP);
 		fNouAnten1.setUndecorated(true);
+		JPanel panel = (JPanel)((JDialog) fNouAnten1).getContentPane();
+		Border raisedbevel = BorderFactory.createRaisedBevelBorder();
+		panel.setBorder(raisedbevel);
+		fNouAnten1.setBackground(Color.BLACK);
         fNouAnten1.setAlwaysOnTop(true);
         fNouAnten1.setTitle("Ajouter une antenne");
         fNouAnten1.setLayout(new GridLayout(6,2));
