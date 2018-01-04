@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Polygon;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
@@ -20,8 +21,7 @@ import javax.swing.JPanel;
 public class Graphe extends JPanel{
 	
 	private FenetrePrincipale FP;
-	private double zoom = 1;
-	private double m;
+	private double nX=0, nY=0, zoom = 1, m;
 	private int OrigineX=0, OrigineY=0;
 	private int X=0, Y=0;
 	
@@ -33,13 +33,53 @@ public class Graphe extends JPanel{
 			@Override
 			public void mouseWheelMoved(MouseWheelEvent e) {if (e.getWheelRotation() < 0) zoom *= 1.25; else zoom *= 0.75; repaint();}});
 		
+		this.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                checkForTriggerEvent(e);
+            }
+
+            public void checkForTriggerEvent(MouseEvent e) {
+                if (e.getButton() == MouseEvent.BUTTON3) {
+                	nX = (e.getX()/zoom)-OrigineX;
+    				nY = (e.getY()/zoom)-OrigineY;
+                    new ajoutAntenne1(FP,nX,nY);
+                }
+            }
+
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
+		
 		this.addMouseMotionListener(new MouseMotionListener() {
 			@Override
 			public void mouseMoved(MouseEvent e) {
 				X = e.getX();
 				Y = e.getY();
 			}
-			
+		
 			@Override
 			public void mouseDragged(MouseEvent e) {
 				OrigineX+=e.getX() - X;

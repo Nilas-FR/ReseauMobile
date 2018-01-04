@@ -41,7 +41,7 @@ public class Options extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new ajoutAntenne1(FP);
+				new ajoutAntenne1(FP,Antenne.POSITIONX_DEFAULT,Antenne.POSITIONY_DEFAULT);
 			}
 		});        
         bLisAnten.addActionListener(new ActionListener() {

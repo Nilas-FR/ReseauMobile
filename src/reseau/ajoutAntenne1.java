@@ -17,7 +17,7 @@ import javax.swing.border.Border;
 
 public class ajoutAntenne1 {
 	
-	public ajoutAntenne1(FenetrePrincipale FP) {
+	public ajoutAntenne1(FenetrePrincipale FP, double tX, double tY) {
 		Dialog fNouAnten1 = new JDialog(FP);
 		fNouAnten1.setUndecorated(true);
 		JPanel panel = (JPanel)((JDialog) fNouAnten1).getContentPane();
@@ -34,9 +34,10 @@ public class ajoutAntenne1 {
         JLabel lTextPuis = new JLabel("Puissance : ");
         JLabel lTextFreq = new JLabel("Fréquence (700-3800 Mhz) : ");
         
+
         JTextField tNom = new JTextField("DefaultName");
-        JTextField tPosX = new JTextField(Antenne.POSITIONX_DEFAULT+"");
-        JTextField tPosY = new JTextField(Antenne.POSITIONY_DEFAULT+"");
+        JTextField tPosX = new JTextField(tX+"");
+        JTextField tPosY = new JTextField(tY+"");
         JTextField tPuis = new JTextField(Antenne.PUISSANCE_DEFAULT+"");
         JTextField tFreq = new JTextField(Antenne.FREQUENCE_DEFAULT+"");
         
