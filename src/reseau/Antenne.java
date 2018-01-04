@@ -31,7 +31,7 @@ public class Antenne {
 	public static final double POSITIONX_DEFAULT = 0;
 	public static final double POSITIONY_DEFAULT = 0;
 	public static final double PUISSANCE_DEFAULT = 50;
-	public static final double FREQUENCE_DEFAULT = 0;
+	public static final double FREQUENCE_DEFAULT = 700;
 	
 	/**
 	 * Constructeur détaillé d'une antenne

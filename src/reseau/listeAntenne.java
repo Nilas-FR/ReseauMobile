@@ -50,6 +50,7 @@ public class listeAntenne {
 				if(0>index || index>=FP.Antennes.size()) return;
 				FP.Antennes.remove(index);
 				liste.updateUI();
+				FP.fGraphe.repaint();
 			}
 		});
 		

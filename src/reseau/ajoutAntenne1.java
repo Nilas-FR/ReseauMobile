@@ -32,7 +32,7 @@ public class ajoutAntenne1 {
         JLabel lTextPosX = new JLabel("Position X : ");
         JLabel lTextPosY = new JLabel("Position Y : ");
         JLabel lTextPuis = new JLabel("Puissance : ");
-        JLabel lTextFreq = new JLabel("Fréquence : ");
+        JLabel lTextFreq = new JLabel("Fréquence (700-3800 Mhz) : ");
         
         JTextField tNom = new JTextField("DefaultName");
         JTextField tPosX = new JTextField(Antenne.POSITIONX_DEFAULT+"");

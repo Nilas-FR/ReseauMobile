@@ -3,6 +3,7 @@ package reseau;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Polygon;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
@@ -20,6 +21,7 @@ public class Graphe extends JPanel{
 	
 	private FenetrePrincipale FP;
 	private double zoom = 1;
+	private double m;
 	private int OrigineX=0, OrigineY=0;
 	private int X=0, Y=0;
 	
@@ -61,14 +63,24 @@ public class Graphe extends JPanel{
     }
 	
 	private void tracerUneAntenne(Graphics g, Antenne a) {
-		g.setColor(Color.ORANGE);
+		float Frequence = (float) (a.frequence);
+		float Ratio= (Frequence-700)/3100;
+		Color Couleur = new Color(Ratio,1-Ratio, 0.0f,0.3f);
+		g.setColor(Couleur);
 		double PositionX = a.position_x;
         double PositionY = a.position_y;
         double Puissance = a.puissance;
         
-        g.fillOval((int)((PositionX-(Puissance/2)+OrigineX) *zoom), (int)((PositionY-(Puissance/2)+OrigineY) *zoom), (int)(Puissance*zoom), (int)(Puissance*zoom));
-    	g.setColor(Color.BLACK);
-    	g.fillOval((int)((PositionX+OrigineX)*zoom), (int)((PositionY+OrigineY)*zoom), (int)(3*zoom), (int)(3*zoom));   
+        Polygon hexagon = new Polygon();
+        for (int i=0; i < 7; i++)
+        {
+           m = Math.PI / 3.0 * i;
+           hexagon.addPoint((int)(Math.round((PositionX + OrigineX + Math.sin(m) * Puissance)*zoom)), (int)(Math.round((PositionY + OrigineY + Math.cos(m) * Puissance))*zoom));
+        }
+        g.fillPolygon(hexagon);
+        g.setColor(Color.BLACK);
+        double Rayon = 4.0;
+    	g.fillOval((int)((PositionX+OrigineX-(Rayon/2.0))*zoom), (int)((PositionY+OrigineY-(Rayon/2.0))*zoom), (int)(Rayon*zoom), (int)(Rayon*zoom));   
 	}
 	
 	public void reset() {
