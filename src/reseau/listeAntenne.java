@@ -17,6 +17,12 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
+/**
+ * Classe qui la fenêtre affichant la liste des antennes
+ * @author Adrien COUCHOT
+ * @version 1.1
+ * modification de Jonathan pour ajouter les bordures
+ */
 public class listeAntenne {
 	
 	public listeAntenne(FenetrePrincipale FP) {

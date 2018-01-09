@@ -14,21 +14,17 @@ import javax.swing.JTextField;
 
 /**
  * 
- * @author Jonathan BOERLEN et Adrien COUCHOT
- * @version 1.0
+ * @author Adrien COUCHOT
+ * @version 1.1
+ * modification Jonathan pour ajouter le bouton pour remettre à l'échelle initiale
  */
 public class Options extends JPanel {
 	
 	private FenetrePrincipale FP;
 	
-	/**
-	 * @author Jonathan BOERLEN et Adrien COUCHOT
-	 * @param FP
-	 */
 	public Options(FenetrePrincipale FP) {
 		this.FP = FP;
 		JButton bNouAnten1 = new JButton("Ajouter une antenne (Clavier)");
-		//JButton bNouAnten2 = new JButton("Ajouter une antenne (Graphique)");
 		JButton bLisAnten = new JButton("Voir la liste");
 		JButton ResetGraph = new JButton("Remettre à l'echelle 1:1");
 		
@@ -51,6 +47,9 @@ public class Options extends JPanel {
 				new listeAntenne(FP);
 			}
 		});
+        /** Le bouton pour remettre à l'échelle 1:1
+         * @author Jonathan BOERLEN
+         */
         ResetGraph.addActionListener(new ActionListener() {
 			
 			@Override

@@ -15,8 +15,22 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
+/**
+ * Classe qui gère l'ajout d'une antenne à travers une fenêtre
+ * @author Adrien COUCHOT
+ * @version 1.0
+ */
 public class ajoutAntenne1 {
 	
+	/**
+	 * Création d'une fenêtre
+	 * @param FP, la fenêtre principale
+	 * @param tX, position X
+	 * @param tY, position X
+	 * @author Adrien COUCHOT
+	 * @version 1.1
+	 * modification de Jonathan pour intégrer les positions tX, tY
+	 */
 	public ajoutAntenne1(FenetrePrincipale FP, double tX, double tY) {
 		Dialog fNouAnten1 = new JDialog(FP);
 		fNouAnten1.setUndecorated(true);
