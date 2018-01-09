@@ -3,7 +3,8 @@ package reseau;
 /**
  * Classe qui gère les antennes
  * @author Adrien COUCHOT
- * @version 1.0
+ * @version 1.1
+ * modification de Jonathan pour intégrer Frequence min et max
  */
 public class Antenne {
 
@@ -32,6 +33,8 @@ public class Antenne {
 	public static final double POSITIONY_DEFAULT = 0;
 	public static final double PUISSANCE_DEFAULT = 50;
 	public static final double FREQUENCE_DEFAULT = 700;
+	public static final double FREQUENCE_MIN = 700;
+	public static final double FREQUENCE_MAX = 3800;
 	
 	/**
 	 * Constructeur détaillé d'une antenne
@@ -46,7 +49,9 @@ public class Antenne {
 		this.position_x = positionX;
 		this.position_y = positionY;
 		this.puissance = puissance;
-		this.frequence = frequence;
+		if (frequence < FREQUENCE_MIN) this.frequence = FREQUENCE_MIN;
+		else if (frequence > FREQUENCE_MAX) this.frequence = FREQUENCE_MAX;
+		else this.frequence = frequence;
 	}
 	
 	/**

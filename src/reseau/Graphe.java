@@ -25,6 +25,10 @@ public class Graphe extends MyMap {
 	private int OrigineX=0, OrigineY=0;
 	private int X=0, Y=0;
 	
+	/**
+	 * 
+	 * @param FP, Fenêtre principale
+	 */
 	public Graphe(FenetrePrincipale FP) {
 		this.FP = FP;
 		//FP.Antennes.elementAt(i) -> tableau contenant les antennes
@@ -41,6 +45,9 @@ public class Graphe extends MyMap {
             }
 
             public void checkForTriggerEvent(MouseEvent e) {
+            	/**
+            	 * 
+            	 */
                 if (e.getButton() == MouseEvent.BUTTON3) {
                 	nX = (e.getX()/zoom)-OrigineX;
     				nY = (e.getY()/zoom)-OrigineY;
@@ -72,18 +79,23 @@ public class Graphe extends MyMap {
 				
 			}
         });
-		
 		this.addMouseMotionListener(new MouseMotionListener() {
+			/**
+			 * 
+			 */
 			@Override
 			public void mouseMoved(MouseEvent e) {
 				X = e.getX();
 				Y = e.getY();
 			}
 		
+			/**
+			 * 
+			 */
 			@Override
 			public void mouseDragged(MouseEvent e) {
-				OrigineX+=e.getX() - X;
-				OrigineY+=e.getY() - Y;
+				OrigineX+=(e.getX() - X)/zoom;
+				OrigineY+=(e.getY() - Y)/zoom;
 				repaint();
 				X = e.getX();
 				Y = e.getY();
@@ -92,6 +104,9 @@ public class Graphe extends MyMap {
 	});
 	}
 	
+	/**
+	 * 
+	 */
 	public void paintComponent(Graphics g) {
         super.paintComponent(g);
         //g.setColor(Color.WHITE);
@@ -102,6 +117,11 @@ public class Graphe extends MyMap {
         }
     }
 	
+	/**
+	 * 
+	 * @param g
+	 * @param a
+	 */
 	private void tracerUneAntenne(Graphics g, Antenne a) {
 		float Frequence = (float) (a.frequence);
 		float Ratio= (Frequence-700)/3100;
@@ -123,6 +143,9 @@ public class Graphe extends MyMap {
     	g.fillOval((int)((PositionX+OrigineX-(Rayon/2.0))*zoom), (int)((PositionY+OrigineY-(Rayon/2.0))*zoom), (int)(Rayon*zoom), (int)(Rayon*zoom));   
 	}
 	
+	/**
+	 * 
+	 */
 	public void reset() {
 		zoom = 1;
 		OrigineX = 0;

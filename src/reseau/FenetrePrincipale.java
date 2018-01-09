@@ -27,6 +27,9 @@ public class FenetrePrincipale extends JFrame{
 	public Vector<Antenne> Antennes = new Vector<Antenne>();
 	public JMenuBar menuBar;
 	
+	/**
+	 * Fenêtre principale du programme
+	 */
 	public FenetrePrincipale(){
 		super("Projet Réseau Mobile");
                 FP = this;
