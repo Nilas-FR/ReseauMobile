@@ -5,7 +5,10 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.Vector;
 import javax.swing.JFrame;
+import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
+
+import map.MyMap;
 
 /**
  * Classe qui gère la fenêtre principale
@@ -16,11 +19,13 @@ import javax.swing.JOptionPane;
 public class FenetrePrincipale extends JFrame{
 	
     private final FenetrePrincipale FP;
+    public final MyMap.Gui gui;
 	public final Options fOptions;
 	public final Graphe fGraphe;
 	public final FichierAntenne fichier;
 	
 	public Vector<Antenne> Antennes = new Vector<Antenne>();
+	public JMenuBar menuBar;
 	
 	public FenetrePrincipale(){
 		super("Projet Réseau Mobile");
@@ -33,8 +38,12 @@ public class FenetrePrincipale extends JFrame{
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setResizable(false);
         
-        add(fOptions, BorderLayout.NORTH);
-        add(fGraphe, BorderLayout.SOUTH);
+        gui = new MyMap.Gui();
+        menuBar = gui.createMenuBar();
+		setJMenuBar(menuBar);
+		
+		add(fGraphe, BorderLayout.SOUTH);
+		add(fOptions, BorderLayout.NORTH);
         
 		pack();
         setVisible(true);

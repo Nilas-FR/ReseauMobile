@@ -10,7 +10,7 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
-import javax.swing.JPanel;
+import map.MyMap;
 
 /**
  * 
@@ -18,7 +18,7 @@ import javax.swing.JPanel;
  * @version 1.0
  */
 
-public class Graphe extends JPanel{
+public class Graphe extends MyMap {
 	
 	private FenetrePrincipale FP;
 	private double nX=0, nY=0, zoom = 1, m;
