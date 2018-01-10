@@ -1,10 +1,10 @@
 package reseau;
 
 /**
- * Classe qui gère les antennes
+ * Classe qui gï¿½re les antennes
  * @author Adrien COUCHOT
  * @version 1.1
- * modification de Jonathan pour intégrer Frequence min et max
+ * modification de Jonathan pour intï¿½grer Frequence min et max
  */
 public class Antenne {
 
@@ -25,24 +25,24 @@ public class Antenne {
 	 */
 	public final double puissance;
 	/**
-	 * Fréquence de l'antenne
+	 * Frï¿½quence de l'antenne
 	 */
 	public final double frequence;
 
 	public static final double POSITIONX_DEFAULT = 0;
 	public static final double POSITIONY_DEFAULT = 0;
-	public static final double PUISSANCE_DEFAULT = 50;
+	public static final double PUISSANCE_DEFAULT = 20;
 	public static final double FREQUENCE_DEFAULT = 700;
 	public static final double FREQUENCE_MIN = 700;
 	public static final double FREQUENCE_MAX = 3800;
 	
 	/**
-	 * Constructeur détaillé d'une antenne
+	 * Constructeur dï¿½taillï¿½ d'une antenne
 	 * @param nom Nom de l'antenne
 	 * @param positionX Position X de l'antenne
 	 * @param positionY Position Y de l'antenne
 	 * @param puissance Puissance de l'antenne
-	 * @param frequence Fréquence de l'antenne
+	 * @param frequence Frï¿½quence de l'antenne
 	 */
 	public Antenne(String nom, double positionX, double positionY, double puissance, double frequence){
 		this.nom = nom;
@@ -55,7 +55,7 @@ public class Antenne {
 	}
 	
 	/**
-	 * Constructeur simplifié d'une antenne
+	 * Constructeur simplifiï¿½ d'une antenne
 	 * @param nom Nom de l'antenne
 	 * @param positionX Position X de l'antenne
 	 * @param positionY Position Y de l'antenne
@@ -65,15 +65,29 @@ public class Antenne {
 	}
 	
 	/**
-	 * Constructeur par défault d'une antenne
+	 * Constructeur par dï¿½fault d'une antenne
 	 * @param nom Nom de l'antenne
 	 */
 	public Antenne(String nom){
 		this(nom, POSITIONX_DEFAULT, POSITIONY_DEFAULT, PUISSANCE_DEFAULT, FREQUENCE_DEFAULT);
 	}
 	
+        /**
+         * Constructeur par recopie
+         * @author Hicham CHOUHAD
+         * @param a antenne d'objet Antenne
+         */
+        public Antenne(Antenne a)
+        {
+            this(a.nom, a.position_x, a.position_y, a.puissance, a.frequence);
+        }
+        
+        public Antenne(Antenne a, double puissance, double frequence)
+        {
+            this(a.nom, a.position_x, a.position_y, puissance, frequence);
+        }
 	/**
-	 * Méthode par défault d'un objet
+	 * Mï¿½thode par dï¿½fault d'un objet
 	 * @return la description de l'antenne
 	 */
 	@Override

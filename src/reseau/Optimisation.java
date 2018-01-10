@@ -25,6 +25,7 @@ public class Optimisation {
     public Optimisation(FenetrePrincipale FP)
     {
         this.FP = FP;
+        fitnessMoyenne.setSize(FAMILLE_MAX);
         for (int i = 0; i < FAMILLE_MAX; i++) {
             genome.add(new Vector<Antenne>());
             genome.add(generation());
@@ -37,14 +38,14 @@ public class Optimisation {
         }
         for(int i = 0; i < FAMILLE_MAX; i++)
         {
-            
+            fitnessMoy(i);
         }
         //initialisation des paramètres
         int nbGeneration = 1;
         
         //paramétrage
         //fitnessAntenne.setSize(FAMILLE_MAX);
-        fitnessMoyenne.setSize(FAMILLE_MAX);
+        
         /*for(int i = 0; i < FAMILLE_MAX; i++)
         {
             fitnessAntenne.get(i).setSize(FP.Antennes.size());
@@ -56,7 +57,8 @@ public class Optimisation {
         }*/
         
         //generations
-        while(nbGeneration <= GENERATION_MAX && fitnessMoyenne.get(FAMILLE_MAX - 1) < LIMITE)
+        //&& fitnessMoyenne.get(FAMILLE_MAX - 1) < LIMITE
+        while(nbGeneration <= GENERATION_MAX )
         {
             if(nbGeneration > 1)
             {
@@ -77,9 +79,27 @@ public class Optimisation {
                 fitnessMoy(i);
                 //trie();
             }
-            
+            for(int i = 0; i < FAMILLE_MAX; i++)
+            {
+                System.err.println(fitnessMoyenne.get(i));
+                
+            }
+            System.err.println("__________________________________");
             nbGeneration++;
         }
+        int plusPetitGenome = 0;
+        for(int i = 1; i < FAMILLE_MAX; i++)
+        {
+            if(fitnessMoyenne.get(plusPetitGenome) > fitnessMoyenne.get(i))
+            {
+                plusPetitGenome = i;
+            }
+        }
+        
+        FP.Antennes = genome.get(plusPetitGenome);
+        
+        
+        
     }
     
     public Vector<Antenne> generation()
@@ -91,8 +111,9 @@ public class Optimisation {
         for(int i = 0; i < FP.Antennes.size(); i++)
         {
             frequenceAleatoire = Antenne.FREQUENCE_MIN + (Antenne.FREQUENCE_MAX - Antenne.FREQUENCE_MIN) * r.nextDouble();
-            puissanceAleatoire = 100 * r.nextDouble();
-            tableauAntenne.add(new Antenne(FP.Antennes.get(i).nom, FP.Antennes.get(i).position_x, FP.Antennes.get(i).position_y, puissanceAleatoire, frequenceAleatoire));
+            puissanceAleatoire = 5 + (50) * r.nextDouble();
+            tableauAntenne.add(new Antenne(FP.Antennes.get(i), puissanceAleatoire, frequenceAleatoire));
+            //tableauAntenne.add(new Antenne(FP.Antennes.get(i).nom, FP.Antennes.get(i).position_x, FP.Antennes.get(i).position_y, puissanceAleatoire, frequenceAleatoire));
         }
         
         return tableauAntenne;
@@ -113,7 +134,7 @@ public class Optimisation {
             moyenne += fitnessAntenne.get(indiceGenome).get(i);
         }
         
-        fitnessMoyenne.set(indiceGenome, moyenne / genome.get(indiceGenome).size());
+        fitnessMoyenne.set(indiceGenome, (moyenne / genome.get(indiceGenome).size()));
     }
     
     public void fitness(int indiceGenome, int indiceAntenne)
