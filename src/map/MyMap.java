@@ -64,7 +64,8 @@ public class MyMap extends JPanel {
 
 	// TilesServers, la représentation mondiale + française. Absolument constants!!!
 	private static TileServer[] TILESERVERS = { new TileServer("http://a.tile.openstreetmap.fr/osmfr/", 18),
-			new TileServer("http://tile.openstreetmap.org/", 18), };
+			//new TileServer("http://tile.openstreetmap.org/", 18)
+			};
 
 	private static final int PREFERRED_WIDTH = 320, PREFERRED_HEIGHT = 200;
 	private static final int ANIMATION_FPS = 15, ANIMATION_DURARTION_MS = 500;
