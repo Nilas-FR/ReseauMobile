@@ -112,7 +112,7 @@ public class MyMap extends JPanel {
 		setOpaque(true);
 		setBackground(new Color(0xc0, 0xc0, 0xc0));
 		add(overlayPanel);
-		add(controlPanel);
+		//add(controlPanel);
 		addMouseListener(mouseListener);
 		addMouseMotionListener(mouseListener);
 		//addMouseWheelListener(mouseListener);
@@ -1141,8 +1141,8 @@ public class MyMap extends JPanel {
 			moves.add(makeButton(rightAction), BorderLayout.EAST);
 			zooms.add(makeButton(zoomInAction), BorderLayout.NORTH);
 			zooms.add(makeButton(zoomOutAction), BorderLayout.SOUTH);
-			add(moves, BorderLayout.NORTH);
-			add(zooms, BorderLayout.SOUTH);
+			//add(moves, BorderLayout.NORTH);
+			//add(zooms, BorderLayout.SOUTH);
 		}
 
 		public void paint(Graphics gOrig) {
