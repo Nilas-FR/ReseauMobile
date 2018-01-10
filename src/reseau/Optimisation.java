@@ -8,7 +8,8 @@ import static java.lang.Math.*;
 import java.util.Random;
 import java.util.Vector;
 /**
- * Classe permettant l'optimisation des fréquences des antennes
+ * Classe permettant l'optimisation des fréquences et puissances des antennes
+ * @version 1.1
  * @author Hicham CHOUHAD
  */
 public class Optimisation {
@@ -18,27 +19,41 @@ public class Optimisation {
     public Vector<Double>          fitnessMoyenne = new Vector();
     final int FAMILLE_MAX = 20;
     final int GENERATION_MAX = 100;
-    final int MAX_ANTENNES = 100;
     final double LIMITE = 0.1;
     
     
     public Optimisation(FenetrePrincipale FP)
     {
-        //initialisation des paramètres
         this.FP = FP;
+        for (int i = 0; i < FAMILLE_MAX; i++) {
+            genome.add(new Vector<Antenne>());
+            genome.add(generation());
+            fitnessAntenne.add(new Vector<Double>());
+            for (int j = 0; j < FP.Antennes.size(); j++) {
+                //genome.get(i).add(new Antenne(FP.Antennes.get(j).nom, FP.Antennes.get(j).position_x, FP.Antennes.get(j).position_y));
+                fitnessAntenne.get(i).add(Double.MAX_VALUE);
+            }
+            
+        }
+        for(int i = 0; i < FAMILLE_MAX; i++)
+        {
+            
+        }
+        //initialisation des paramètres
         int nbGeneration = 1;
         
         //paramétrage
-        fitnessAntenne.setSize(FAMILLE_MAX);
+        //fitnessAntenne.setSize(FAMILLE_MAX);
         fitnessMoyenne.setSize(FAMILLE_MAX);
-        for(int i = 0; i < FAMILLE_MAX; i++)
+        /*for(int i = 0; i < FAMILLE_MAX; i++)
         {
+            fitnessAntenne.get(i).setSize(FP.Antennes.size());
             genome.add(generation());
             for(int j = 0; j < FP.Antennes.size(); j++)
             {
                 fitnessAntenne.get(i).add(Double.MAX_VALUE);
             }
-        }
+        }*/
         
         //generations
         while(nbGeneration <= GENERATION_MAX && fitnessMoyenne.get(FAMILLE_MAX - 1) < LIMITE)

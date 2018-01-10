@@ -12,7 +12,7 @@ import javax.swing.JPanel;
  * 
  * @author Adrien COUCHOT
  * @version 1.1
- * modification Jonathan pour ajouter le bouton pour remettre à l'échelle initiale
+ * modification Jonathan pour ajouter le bouton pour remettre ï¿½ l'ï¿½chelle initiale
  */
 public class Options extends JPanel {
 	
@@ -22,13 +22,16 @@ public class Options extends JPanel {
 		this.FP = FP;
 		JButton bNouAnten1 = new JButton("Ajouter une antenne (Clavier)");
 		JButton bLisAnten = new JButton("Voir la liste");
-		JButton ResetGraph = new JButton("Remettre à l'echelle 1:1");
-		
+		JButton ResetGraph = new JButton("Remettre ï¿½ l'echelle 1:1");
+		JButton optimisation = new JButton ("Optimiser les antennes");
 		add(bNouAnten1);
 		//add(bNouAnten2);
 		add(bLisAnten);
 		//add(ResetGraph);
 		
+                add(optimisation);
+                
+                
         bNouAnten1.addActionListener(new ActionListener() {
 			
 			@Override
@@ -43,7 +46,15 @@ public class Options extends JPanel {
 				new listeAntenne(FP);
 			}
 		});
-        /** Le bouton pour remettre à l'échelle 1:1
+        
+        optimisation.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Optimisation(FP);
+			}
+		});
+        /** Le bouton pour remettre ï¿½ l'ï¿½chelle 1:1
          * @author Jonathan BOERLEN
          */
         ResetGraph.addActionListener(new ActionListener() {
