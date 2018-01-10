@@ -6,36 +6,81 @@
 package reseau;
 import static java.lang.Math.*;
 import java.util.Random;
+import java.util.Vector;
 /**
  * Classe permettant l'optimisation des fréquences des antennes
  * @author Hicham CHOUHAD
  */
 public class Optimisation {
-    public Antenne tableauAntenne[];
-    public int tailleAntenne;
-    
-    public double fitness[];
-    
-    final int GENERATIONS  = 100;
+    private final FenetrePrincipale FP;
+    public Vector<Vector<Antenne>> genome = new Vector();
+    public Vector<Vector<Double>>  fitnessAntenne = new Vector();
+    public Vector<Double>          fitnessMoyenne = new Vector();
+    final int FAMILLE_MAX = 20;
+    final int GENERATION_MAX = 100;
     final int MAX_ANTENNES = 100;
-    final double LIMITE = 0.3;
-    public Optimisation()
+    final double LIMITE = 0.1;
+    
+    
+    public Optimisation(FenetrePrincipale FP)
     {
-        int i = 0;
-        tableauAntenne = new Antenne[MAX_ANTENNES];
-        tailleAntenne = 0;
-        //récupération des antennes
+        //initialisation des paramètres
+        this.FP = FP;
+        int nbGeneration = 1;
         
-        //tant que : arret ou nb gen
-        while(i < GENERATIONS && fitness[tailleAntenne - 1] < LIMITE)
+        //paramétrage
+        fitnessAntenne.setSize(FAMILLE_MAX);
+        fitnessMoyenne.setSize(FAMILLE_MAX);
+        for(int i = 0; i < FAMILLE_MAX; i++)
         {
-            mutation();
-            calculFitness();
-            trie();
-            //calcul fitness
-            //trie
-            i++;
+            genome.add(generation());
+            for(int j = 0; j < FP.Antennes.size(); j++)
+            {
+                fitnessAntenne.get(i).add(Double.MAX_VALUE);
+            }
         }
+        
+        //generations
+        while(nbGeneration <= GENERATION_MAX && fitnessMoyenne.get(FAMILLE_MAX - 1) < LIMITE)
+        {
+            if(nbGeneration > 1)
+            {
+                for(int i = ((int)0.1*FAMILLE_MAX); i < FAMILLE_MAX; i++)
+                {
+                    genome.set(i, generation());
+                }
+                mutation();
+            }
+            
+            for(int i = 0; i < FAMILLE_MAX; i++)
+            {
+                for(int j = 0; j < genome.get(i).size(); j++)
+                {
+                    fitness(i, j);
+                    
+                }
+                fitnessMoy(i);
+                //trie();
+            }
+            
+            nbGeneration++;
+        }
+    }
+    
+    public Vector<Antenne> generation()
+    {
+        Vector<Antenne> tableauAntenne = new Vector();
+        Random r = new Random();
+        double frequenceAleatoire, puissanceAleatoire;
+        
+        for(int i = 0; i < FP.Antennes.size(); i++)
+        {
+            frequenceAleatoire = Antenne.FREQUENCE_MIN + (Antenne.FREQUENCE_MAX - Antenne.FREQUENCE_MIN) * r.nextDouble();
+            puissanceAleatoire = 100 * r.nextDouble();
+            tableauAntenne.add(new Antenne(FP.Antennes.get(i).nom, FP.Antennes.get(i).position_x, FP.Antennes.get(i).position_y, puissanceAleatoire, frequenceAleatoire));
+        }
+        
+        return tableauAntenne;
     }
     
     public boolean intersection(Antenne antenne1, Antenne antenne2)
@@ -45,27 +90,47 @@ public class Optimisation {
         return distance < antenne1.puissance + antenne2.puissance;
     }
     
-    public double fitness(int indiceAntenne)
+    public void fitnessMoy(int indiceGenome)
     {
-        double fitness = Double.MAX_VALUE;
-        double sommeSIR = 0;
-        boolean intersection[] = new boolean[tailleAntenne];
-        for(int i = 0; i < tailleAntenne; i++)
+        double moyenne = 0;
+        for(int i = 0; i < genome.get(indiceGenome).size(); i++)
         {
-            if(indiceAntenne != i && intersection(tableauAntenne[indiceAntenne], tableauAntenne[i]))
-            {
-                sommeSIR += tableauAntenne[i].puissance * tableauAntenne[i].frequence;
-            }
+            moyenne += fitnessAntenne.get(indiceGenome).get(i);
         }
         
-        //signal to interference ratio = puissance*frequence / (somme des puissance*frequence des antennes en interference)
-        return (tableauAntenne[indiceAntenne].puissance * tableauAntenne[indiceAntenne].frequence) / sommeSIR;
+        fitnessMoyenne.set(indiceGenome, moyenne / genome.get(indiceGenome).size());
     }
     
-    
-    public void trie()
+    public void fitness(int indiceGenome, int indiceAntenne)
     {
-        Antenne tableauTrie[] = new Antenne[MAX_ANTENNES];
+        double sir;
+        fitnessAntenne.get(indiceGenome).set(indiceAntenne, Double.MAX_VALUE);
+        for(int i = 0; i < genome.get(indiceGenome).size(); i++)
+        {
+            if(indiceAntenne != i && intersection(genome.get(indiceGenome).get(indiceAntenne), genome.get(indiceGenome).get(i)));
+            {
+                sir = (genome.get(indiceGenome).get(indiceAntenne).puissance * genome.get(indiceGenome).get(indiceAntenne).frequence) / (genome.get(indiceGenome).get(i).puissance * genome.get(indiceGenome).get(i).frequence);
+                if(sir > 1)
+                {
+                    sir = 1 / sir;
+                }
+                if(sir < fitnessAntenne.get(indiceGenome).get(indiceAntenne))
+                {
+                    fitnessAntenne.get(indiceGenome).set(indiceAntenne, sir);
+                }
+            }
+        }
+    }
+    
+    /*public void trie()
+    {
+        Vector<Vector<Antenne>> tableauTrie = new Vector();
+        double plusPetit;
+        int indicePlusPetit;
+        
+        
+        
+        //Antenne tableauTrie[] = new Antenne[MAX_ANTENNES];
         double plusPetit;
         int indicePlusPetit;
         Antenne antenneTemp;
@@ -98,27 +163,36 @@ public class Optimisation {
         }
         
         tableauAntenne = tableauTrie;
-    }
+    }*/
     
     public void mutation()
     {
         Random r = new Random();
+        int indicePireAntenne = -1;
+        double pireFitness;
         double frequenceAleatoire, puissanceAleatoire;
         Antenne mutationAntenne;
-        for(int i = (tailleAntenne / 2); i < tailleAntenne; i++)
+        
+        for(int i = 0; i < ((int)FAMILLE_MAX*0.1); i++)
         {
+            pireFitness = Double.MIN_VALUE;
+            for(int j = 0; j < genome.get(i).size(); j++)
+            {
+                if(fitnessAntenne.get(i).get(j) > pireFitness)
+                {
+                    indicePireAntenne = j;
+                    pireFitness = fitnessAntenne.get(i).get(j);
+                }
+            }
+            
             frequenceAleatoire = Antenne.FREQUENCE_MIN + (Antenne.FREQUENCE_MAX - Antenne.FREQUENCE_MIN) * r.nextDouble();
             puissanceAleatoire = 100 * r.nextDouble();
-            mutationAntenne = new Antenne(tableauAntenne[i].nom, tableauAntenne[i].position_x, tableauAntenne[i].position_y, puissanceAleatoire, frequenceAleatoire);
-            tableauAntenne[i] = mutationAntenne;
-        }
-    }
-    
-    public void calculFitness()
-    {
-        for(int i = 0; i < tailleAntenne; i++)
-        {
-            fitness[i] = fitness(i);
+            
+            if(indicePireAntenne != -1)
+            {
+                mutationAntenne = new Antenne(genome.get(i).get(indicePireAntenne).nom, genome.get(i).get(indicePireAntenne).position_x, genome.get(i).get(indicePireAntenne).position_y, puissanceAleatoire, frequenceAleatoire);
+                genome.get(i).set(indicePireAntenne, mutationAntenne);
+            }
         }
     }
 }
