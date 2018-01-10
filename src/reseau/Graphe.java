@@ -10,8 +10,6 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
-import javax.swing.SwingUtilities;
-
 import map.MyMap;
 
 /**
@@ -37,10 +35,7 @@ public class Graphe extends MyMap {
 		setPreferredSize(new Dimension(1200, 600));
 		this.addMouseWheelListener(new MouseWheelListener() {
 			@Override
-			public void mouseWheelMoved(MouseWheelEvent e) {
-				// Modification Adrien TODO
-				//if (e.getWheelRotation() < 0) zoom *= 1.25; else zoom *= 0.75; repaint();
-				}});
+			public void mouseWheelMoved(MouseWheelEvent e) {if (e.getWheelRotation() < 0) zoom *= 1.25; else zoom *= 0.75; repaint();}});
 		
 		this.addMouseListener(new MouseListener() {
 
@@ -50,6 +45,9 @@ public class Graphe extends MyMap {
             }
 
             public void checkForTriggerEvent(MouseEvent e) {
+            	/**
+            	 * 
+            	 */
                 if (e.getButton() == MouseEvent.BUTTON3) {
                 	nX = (e.getX()/zoom)-OrigineX;
     				nY = (e.getY()/zoom)-OrigineY;
@@ -91,8 +89,6 @@ public class Graphe extends MyMap {
 		
 			@Override
 			public void mouseDragged(MouseEvent e) {
-				//Modification Adrien TODO
-				if (!SwingUtilities.isLeftMouseButton(e)) return;
 				OrigineX+=(e.getX() - X)/zoom;
 				OrigineY+=(e.getY() - Y)/zoom;
 				repaint();

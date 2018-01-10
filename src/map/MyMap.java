@@ -115,7 +115,7 @@ public class MyMap extends JPanel {
 		add(controlPanel);
 		addMouseListener(mouseListener);
 		addMouseMotionListener(mouseListener);
-		//addMouseWheelListener(mouseListener);
+		addMouseWheelListener(mouseListener);
 		setZoom(zoom);
 		setMapPosition(mapPosition);
 		checkTileServers();
@@ -248,9 +248,7 @@ public class MyMap extends JPanel {
 			}
 
 			protected void onFrame() {
-				//smoothScale = 1.0 + getFactor();
-				//Modification Adrien TODO
-				smoothScale *= 1.25;
+				smoothScale = 1.0 + getFactor();
 				repaint();
 			}
 
@@ -280,9 +278,7 @@ public class MyMap extends JPanel {
 			}
 
 			protected void onFrame() {
-				//smoothScale = 1 - .5 * getFactor();
-				//Modification Adrien TODO
-				smoothScale *= 0.75;
+				smoothScale = 1 - .5 * getFactor();
 				repaint();
 			}
 
@@ -947,15 +943,14 @@ public class MyMap extends JPanel {
 		}
 
 		public void mouseClicked(MouseEvent e) {
-			//Modification Adrien TODO
-			/*if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() >= 2) {
+			if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() >= 2) {
 				zoomInAnimated(new Point(mouseCoords.x, mouseCoords.y));
 			} else if (e.getButton() == MouseEvent.BUTTON3 && e.getClickCount() >= 2) {
 				zoomOutAnimated(new Point(mouseCoords.x, mouseCoords.y));
 			} else if (e.getButton() == MouseEvent.BUTTON2) {
 				setCenterPosition(getCursorPosition());
 				repaint();
-			}*/
+			}
 		}
 
 		public void mousePressed(MouseEvent e) {

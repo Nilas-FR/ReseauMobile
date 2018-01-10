@@ -27,7 +27,7 @@ public class Options extends JPanel {
 		add(bNouAnten1);
 		//add(bNouAnten2);
 		add(bLisAnten);
-		//add(ResetGraph);
+		add(ResetGraph);
 		
                 add(optimisation);
                 
