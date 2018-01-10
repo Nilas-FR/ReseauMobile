@@ -15,7 +15,7 @@ import javax.swing.SwingUtilities;
 import map.MyMap;
 
 /**
- * 
+ * Gestion du graphique
  * @author Jonathan BOERLEN
  * @version 1.0
  */
@@ -28,7 +28,7 @@ public class Graphe extends MyMap {
 	private int X=0, Y=0;
 	
 	/**
-	 * 
+	 * Permet d'afficher le graphique et obtiens les nouvelles coordonnées (x,y) apres le deplacement ou zoom du graphique.
 	 * @param FP, Fenêtre principale
 	 */
 	public Graphe(FenetrePrincipale FP) {
@@ -82,18 +82,13 @@ public class Graphe extends MyMap {
 			}
         });
 		this.addMouseMotionListener(new MouseMotionListener() {
-			/**
-			 * 
-			 */
+
 			@Override
 			public void mouseMoved(MouseEvent e) {
 				X = e.getX();
 				Y = e.getY();
 			}
 		
-			/**
-			 * 
-			 */
 			@Override
 			public void mouseDragged(MouseEvent e) {
 				//Modification Adrien TODO
@@ -109,7 +104,7 @@ public class Graphe extends MyMap {
 	}
 	
 	/**
-	 * 
+	 *  Permet l'affichage de chaque antenne
 	 */
 	public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -122,9 +117,9 @@ public class Graphe extends MyMap {
     }
 	
 	/**
-	 * 
-	 * @param g
-	 * @param a
+	 * Dessine une antenne sous la forme hexagonale (puissance) avec son centre (x,y) et une couleur (frequence)
+	 * @param g, Graphique
+	 * @param a, Une antenne
 	 */
 	private void tracerUneAntenne(Graphics g, Antenne a) {
 		float Frequence = (float) (a.frequence);
@@ -148,7 +143,7 @@ public class Graphe extends MyMap {
 	}
 	
 	/**
-	 * 
+	 * Remet a zero les options graphique (Zoom, Deplacement du graphique)
 	 */
 	public void reset() {
 		zoom = 1;
