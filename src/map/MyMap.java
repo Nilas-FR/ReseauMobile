@@ -1141,8 +1141,8 @@ public class MyMap extends JPanel {
 			moves.add(makeButton(rightAction), BorderLayout.EAST);
 			zooms.add(makeButton(zoomInAction), BorderLayout.NORTH);
 			zooms.add(makeButton(zoomOutAction), BorderLayout.SOUTH);
-			//add(moves, BorderLayout.NORTH);
-			//add(zooms, BorderLayout.SOUTH);
+			add(moves, BorderLayout.NORTH);
+			add(zooms, BorderLayout.SOUTH);
 		}
 
 		public void paint(Graphics gOrig) {
